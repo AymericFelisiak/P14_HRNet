@@ -1,0 +1,44 @@
+.employees-table {
+    border-spacing: 0px;
+    border-collapse: collapse;
+    thead {
+        user-select: none;
+
+        tr {
+            border-bottom: 1px solid black;
+            th {
+                .header-content {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    column-gap: 10px;
+                    padding: 10px 20px;
+
+                    .arrow-wrapper {
+                        display: flex;
+                        flex-direction: column;
+
+                        .default {
+                            color: grey;
+                        }
+
+                        .sorted {
+                            color: black;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            td {
+                .cell-data {
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}

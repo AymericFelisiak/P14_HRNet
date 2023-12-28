@@ -1,0 +1,38 @@
+[
+    {
+        "header": "First Name",
+        "key": "first-name"
+    },
+    {
+        "header": "Last Name",
+        "key": "last-name"
+    },
+    {
+        "header": "Start Date",
+        "key": "start-date"
+    },
+    {
+        "header": "Department",
+        "key": "department"
+    },
+    {
+        "header": "Date of Birth",
+        "key": "date-of-birth"
+    },
+    {
+        "header": "Street",
+        "key": "street"
+    },
+    {
+        "header": "City",
+        "key": "city"
+    },
+    {
+        "header": "State",
+        "key": "state"
+    },
+    {
+        "header": "Zip Code",
+        "key": "zip-code"
+    }
+]

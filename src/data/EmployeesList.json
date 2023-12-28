@@ -1,0 +1,35 @@
+[
+    {
+        "city": "AAA",
+        "date-of-birth": "2023-11-29",
+        "department": "Sales",
+        "first-name": "AAA",
+        "last-name": "AAA",
+        "start-date": "2023-11-29",
+        "state": "Alabama",
+        "street": "AAA",
+        "zip-code": "11111"
+    },
+    {
+        "city": "BBB",
+        "date-of-birth": "2023-11-29",
+        "department": "Marketing",
+        "first-name": "BBB",
+        "last-name": "BBB",
+        "start-date": "2023-11-29",
+        "state": "Arizona",
+        "street": "BBB",
+        "zip-code": "22222"
+    },
+    {
+        "city": "CCC",
+        "date-of-birth": "2023-11-29",
+        "department": "Legal",
+        "first-name": "CCC",
+        "last-name": "CCC",
+        "start-date": "2023-11-29",
+        "state": "Alabama",
+        "street": "CCC",
+        "zip-code": "10220"
+    }
+]
