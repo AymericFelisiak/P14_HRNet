@@ -1,12 +1,11 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addEmployee } from '../../store/EmployeeSlice';
-import DropDownMenu  from 'p14_dropdownmenu';
+import DropDownMenu from 'p14_dropdownmenu';
 import states from '../../data/StateList.json';
 import departments from '../../data/DepartmentList.json';
 
-export default function Form() {
-
+export default function Form({ showModal }) {
     const dispatch = useDispatch();
 
     const handleAddEmployee = (e) => {
@@ -14,6 +13,7 @@ export default function Form() {
         const form = new FormData(e.target);
         const data = Object.fromEntries(form.entries());
         dispatch(addEmployee(data));
+        showModal(true);
     };
 
     return (

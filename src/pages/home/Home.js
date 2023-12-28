@@ -1,9 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Form from "../../components/form/Form";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Form from '../../components/form/Form';
+import Modal from '../../components/modal/Modal';
 
 export default function Home() {
-    return(
+    const [showModal, setShowModal] = useState(false);
+
+    return (
         <>
             <div className="title">
                 <h1>HRnet</h1>
@@ -11,10 +14,9 @@ export default function Home() {
             <div className="container">
                 <Link to="/employee-list">View Current Employees</Link>
                 <h2>Create Employee</h2>
-                <Form />
+                <Form showModal={setShowModal} />
             </div>
-            <div id="confirmation" className="modal">Employee Created!</div>
+            {showModal ? <Modal showModal={setShowModal}/> : <></>}
         </>
-
-    )
+    );
 }

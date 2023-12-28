@@ -1,2 +1,7 @@
 @use 'pages/home';
 @use 'components/table';
+@use 'components/modal';
+
+body {
+    margin: 0;
+}
