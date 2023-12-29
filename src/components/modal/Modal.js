@@ -6,7 +6,7 @@ export default function Modal({showModal}) {
         <div className='modal-container'>
             <div className='modal-wrapper'>
                 <p>Employee Created!</p>
-                <IoIosCloseCircle class="close-button" onClick={(e) => showModal(false)}/>
+                <IoIosCloseCircle className="close-button" onClick={(e) => showModal(false)}/>
             </div>
         </div>
     );

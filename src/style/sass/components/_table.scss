@@ -1,44 +1,59 @@
-.employees-table {
-    border-spacing: 0px;
-    border-collapse: collapse;
-    thead {
-        user-select: none;
+.employees-table-container {
 
-        tr {
-            border-bottom: 1px solid black;
-            th {
-                .header-content {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    column-gap: 10px;
-                    padding: 10px 20px;
+    .employees-table-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .employees-table {
+        border-spacing: 0px;
+        border-collapse: collapse;
+        thead {
+            user-select: none;
 
-                    .arrow-wrapper {
+            tr {
+                border-bottom: 1px solid black;
+                th {
+                    .header-content {
                         display: flex;
-                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        column-gap: 10px;
+                        padding: 10px 20px;
 
-                        .default {
-                            color: grey;
-                        }
+                        .arrow-wrapper {
+                            display: flex;
+                            flex-direction: column;
 
-                        .sorted {
-                            color: black;
+                            .default {
+                                color: grey;
+                            }
+
+                            .sorted {
+                                color: black;
+                            }
                         }
+                    }
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                td {
+                    .cell-data {
+                        display: flex;
+                        justify-content: center;
                     }
                 }
             }
         }
     }
 
-    tbody {
-        tr {
-            td {
-                .cell-data {
-                    display: flex;
-                    justify-content: center;
-                }
-            }
-        }
+    .employees-table-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 }
