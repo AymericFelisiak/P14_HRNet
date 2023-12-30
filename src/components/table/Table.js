@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import DropDownMenu from 'p14_dropdownmenu';
+import { useSelector } from 'react-redux';
 
-export default function Table({ className, headers, data }) {
-    const [tableData, setTableData] = useState(data);
+export default function Table({ className, headers }) {
+    const employees = useSelector((state) => state.employees.user);
+    const [tableData, setTableData] = useState(employees);
     const [unsortedTable, setUnsortedTable] = useState();
     const [showEntries, setShowEntries] = useState(10);
     const [currentPage, setCurrentPage] = useState(1);
@@ -23,12 +25,8 @@ export default function Table({ className, headers, data }) {
             if (Number.isInteger(max)) {
                 setMaxPage(max);
             } else setMaxPage(Math.round(max) + 1);
-            setNextPageDisabled(false);
-        }
-        else {
-            setNextPageDisabled(true);
-        }
-    }, [setMaxPage, data.length, showEntries, data, tableData.length]);
+        } else setMaxPage(1);
+    }, [setMaxPage, showEntries, tableData.length]);
 
     const numberEntries = [
         { name: '10' },
@@ -38,11 +36,24 @@ export default function Table({ className, headers, data }) {
         { name: '50' }
     ];
 
+    useEffect(() => {
+        if (currentPage === 1) {
+            setPreviousPageDisabled(true);
+            setNextPageDisabled(false);
+            if (maxPage === 1) setNextPageDisabled(true);
+        } else {
+            setPreviousPageDisabled(false);
+            if (currentPage === maxPage) {
+                setNextPageDisabled(true);
+            } else {
+                setNextPageDisabled(false);
+            }
+        }
+    }, [currentPage, maxPage]);
+
     const nextPage = (e) => {
         const newPage = currentPage + 1;
         setCurrentPage(newPage);
-        setPreviousPageDisabled(false);
-        if (newPage === maxPage) setNextPageDisabled(true);
     };
 
     const previousPage = (e) => {
@@ -56,8 +67,9 @@ export default function Table({ className, headers, data }) {
     const handleSearch = (e) => {
         const searchValue = e.target.value.toLowerCase().toString();
         if (searchValue.length > 2) {
+            if (currentPage > 1) setCurrentPage(1);
             setIsSearching(true);
-            const results = data
+            const results = employees
                 .map((employee) => {
                     for (let i = 0; i < headers.length; i++) {
                         const key = headers[i].key;
@@ -70,7 +82,7 @@ export default function Table({ className, headers, data }) {
             setTableData(results);
             setUnsortedTable(results);
         } else if (isSearching) {
-            setTableData(data);
+            setTableData(employees);
             setIsSearching(false);
             setUnsortedTable();
         }
@@ -80,15 +92,15 @@ export default function Table({ className, headers, data }) {
      * Handler for asc/desc sorting.
      * Needed for some edge case where sort is still selected when used deletes search keywords.
      */
-    
+
     useEffect(() => {
         if (sortOrder === 'none') {
             if (isSearching) setTableData(unsortedTable);
-            else setTableData(data);
+            else setTableData(employees);
         } else if (sortField) {
             var sorted;
             if (!isSearching) {
-                sorted = [...data].sort((a, b) => {
+                sorted = [...employees].sort((a, b) => {
                     if (a[sortField] === null) return 1;
                     if (b[sortField] === null) return -1;
                     if (a[sortField] === null && b[sortField] === null)
@@ -118,7 +130,7 @@ export default function Table({ className, headers, data }) {
             }
             setTableData(sorted);
         }
-    }, [data, isSearching, sortField, sortOrder, unsortedTable]);
+    }, [employees, isSearching, sortField, sortOrder, unsortedTable]);
 
     return (
         <main className="employees-table-container">
