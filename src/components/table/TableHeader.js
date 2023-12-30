@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React from 'react';
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
 
 export default function TableHeader({ columns, sortField, setSortField, sortOrder, setSortOrder }) {
