@@ -1,21 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
 
-export default function TableHeader({ columns, handleSorting }) {
-    const [sortField, setSortField] = useState('');
-    const [order, setOrder] = useState('none');
+export default function TableHeader({ columns, sortField, setSortField, sortOrder, setSortOrder }) {
 
     const handleSortingChange = (key) => {
-        const sortOrder =
-            order === 'none'
+        const newSortOrder =
+            sortOrder === 'none'
                 ? 'asc'
-                : key === sortField && order === 'asc'
+                : key === sortField && sortOrder === 'asc'
                 ? 'desc'
-                : 'none';
+                : key === sortField
+                ? 'none'
+                : 'asc';
         setSortField(key);
-        setOrder(sortOrder);
-        handleSorting(key, sortOrder);
+        setSortOrder(newSortOrder);
     };
 
     return (
@@ -26,12 +25,12 @@ export default function TableHeader({ columns, handleSorting }) {
                         <th key={key} onClick={() => handleSortingChange(key)}>
                             <div className="header-content">
                                 {header}
-                                {key !== sortField || order === 'none' ? (
+                                {key !== sortField || sortOrder === 'none' ? (
                                     <div className="arrow-wrapper">
                                         <IoIosArrowUp className="arrow-up default" />
                                         <IoIosArrowDown className="arrow-down default" />
                                     </div>
-                                ) : order === 'asc' ? (
+                                ) : sortOrder === 'asc' ? (
                                     <div className="arrow-wrapper">
                                         <IoIosArrowUp className="arrow-up sorted" />
                                         <IoIosArrowDown className="arrow-down default" />
