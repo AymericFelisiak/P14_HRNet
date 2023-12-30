@@ -51,6 +51,14 @@ export default function Table({ className, headers }) {
         }
     }, [currentPage, maxPage]);
 
+    /**
+     * Resets to first page when users changes show entries value
+     */
+    
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [showEntries])
+
     const nextPage = (e) => {
         const newPage = currentPage + 1;
         setCurrentPage(newPage);
