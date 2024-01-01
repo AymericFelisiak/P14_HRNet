@@ -196,27 +196,27 @@ export default function Table({ headers }) {
                 <div className="level-right pagination is-small">
                     <ul className="pagination-list">
                         <li>
-                            <a
+                            <button
                                 className="pagination-link"
                                 onClick={previousPage}
                                 disabled={previousPageDisabled}
                             >
                                 Previous
-                            </a>
+                            </button>
                         </li>
                         <li>
-                            <a className="pagination-link is-current">
+                            <button className="pagination-link is-current">
                                 {currentPage}
-                            </a>
+                            </button>
                         </li>
                         <li>
-                            <a
+                            <button
                                 className="pagination-link"
                                 onClick={nextPage}
                                 disabled={nextPageDisabled}
                             >
                                 Next
-                            </a>
+                            </button>
                         </li>
                     </ul>
                 </div>
