@@ -153,7 +153,7 @@ export default function Table() {
             }
             setTableData(sorted);
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [employees, isSearching, sortField, sortOrder, unsortedTable]);
 
     return (
@@ -163,9 +163,10 @@ export default function Table() {
                     className="level-left entries-options-wrapper"
                     onChange={(e) => setShowEntries(e.target.value)}
                 >
-                    Show&nbsp;
+                    <label htmlFor="number-entries">Show&nbsp;</label>
                     <div className="select is-small">
                         <DropDownMenu
+                            id="number-entries"
                             name="number-entries"
                             className=""
                             data={numberEntries}
@@ -179,13 +180,17 @@ export default function Table() {
                         data-testid="search-input"
                         className="input is-small"
                         name="search"
+                        id="search"
                         type="text"
                         onChange={handleSearch}
                     />
                 </div>
             </div>
             <div className="table-container">
-                <table data-testid="table" className="table is-striped is-hoverable is-fullwidth">
+                <table
+                    data-testid="table"
+                    className="table is-striped is-hoverable is-fullwidth"
+                >
                     <TableHeader
                         columns={Headers}
                         sortField={sortField}

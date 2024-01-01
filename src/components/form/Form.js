@@ -84,7 +84,6 @@ export default function Form({ showModal }) {
                     </div>
 
                     <div className="column is-half">
-                        {/* <legend>Address</legend> */}
                         <div className="field">
                             <label className="label" htmlFor="street">
                                 Street
