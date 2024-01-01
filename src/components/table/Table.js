@@ -8,7 +8,7 @@ export default function Table({ headers }) {
     const employees = useSelector((state) => state.employees.user);
     const [tableData, setTableData] = useState(employees);
     const [unsortedTable, setUnsortedTable] = useState();
-    const [showEntries, setShowEntries] = useState(10);
+    const [showEntries, setShowEntries] = useState(5);
     const [currentPage, setCurrentPage] = useState(1);
     const [maxPage, setMaxPage] = useState();
     const [nextPageDisabled, setNextPageDisabled] = useState(false);
@@ -74,7 +74,7 @@ export default function Table({ headers }) {
 
     const handleSearch = (e) => {
         const searchValue = e.target.value.toLowerCase().toString();
-        if (searchValue.length > 2) {
+        if (searchValue.length > 1) {
             if (currentPage > 1) setCurrentPage(1);
             setIsSearching(true);
             const results = employees
@@ -139,6 +139,7 @@ export default function Table({ headers }) {
             }
             setTableData(sorted);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [employees, isSearching, sortField, sortOrder, unsortedTable]);
 
     return (
