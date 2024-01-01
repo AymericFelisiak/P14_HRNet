@@ -16,7 +16,12 @@ export default function Navbar() {
             <div className="navbar-menu">
                 <div className="navbar-end">
                     <div className="navbar-item">
-                        <Link className="button is-link is-outlined is-rounded" to={isHome ? '/employee-list' : '/'}>{isHome ? 'View Current Employees' : 'Home'}</Link>
+                        <Link
+                            className="button is-link is-outlined is-rounded"
+                            to={isHome ? '/employee-list' : '/'}
+                        >
+                            {isHome ? 'View Current Employees' : 'Home'}
+                        </Link>
                     </div>
                 </div>
             </div>

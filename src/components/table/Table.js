@@ -162,6 +162,7 @@ export default function Table({ headers }) {
                 <div className="level-right search">
                     <label htmlFor="search">Search:&nbsp;</label>
                     <input
+                        data-testid="search-input"
                         className="input is-small"
                         name="search"
                         type="text"
@@ -170,7 +171,7 @@ export default function Table({ headers }) {
                 </div>
             </div>
             <div className="table-container">
-                <table className="table is-striped is-hoverable is-fullwidth">
+                <table data-testid="table" className="table is-striped is-hoverable is-fullwidth">
                     <TableHeader
                         columns={headers}
                         sortField={sortField}

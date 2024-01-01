@@ -1,8 +1,8 @@
 import { screen } from '@testing-library/react';
-import Form from '../form/Form';
-import { renderWithProviders } from '../../utils/test-utils';
+import Form from '../components/form/Form';
+import { renderWithProviders } from '../utils/test-utils';
 import userEvent from '@testing-library/user-event';
-import Home from '../../pages/home/Home';
+import Home from '../pages/home/Home';
 import { act } from 'react-dom/test-utils';
 
 describe('Form page', () => {
@@ -19,7 +19,7 @@ describe('Form page', () => {
             expect(button).toBeInTheDocument();
             await act(async () => await userEvent.click(button));
             const employees = store.getState().employees.user;
-            expect(employees.length).toBe(1);
+            expect(employees).toHaveLength(3);
         });
         test('Shows modal window', async () => {
             renderWithProviders(<Home />);
