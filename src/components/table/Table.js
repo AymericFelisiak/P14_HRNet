@@ -29,11 +29,11 @@ export default function Table({ headers }) {
     }, [setMaxPage, showEntries, tableData.length]);
 
     const numberEntries = [
+        { name: '5' },
         { name: '10' },
+        { name: '15' },
         { name: '20' },
-        { name: '30' },
-        { name: '40' },
-        { name: '50' }
+        { name: '25' }
     ];
 
     useEffect(() => {
@@ -90,6 +90,7 @@ export default function Table({ headers }) {
             setTableData(results);
             setUnsortedTable(results);
         } else if (isSearching) {
+            setCurrentPage(1);
             setTableData(employees);
             setIsSearching(false);
             setUnsortedTable();
