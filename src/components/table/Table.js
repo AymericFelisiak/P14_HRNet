@@ -3,8 +3,18 @@ import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import DropDownMenu from 'p14_dropdownmenu';
 import { useSelector } from 'react-redux';
+import Headers from '../../data/TableHeaders.json';
 
-export default function Table({ headers }) {
+/**
+ * Table component.
+ * Contains all the logic behind the table :
+ * - search function
+ * - table sort (when clicking a header)
+ * - number of entries the user wants to see
+ * - next/previous pages events
+ */
+
+export default function Table() {
     const employees = useSelector((state) => state.employees.user);
     const [tableData, setTableData] = useState(employees);
     const [unsortedTable, setUnsortedTable] = useState();
@@ -19,6 +29,7 @@ export default function Table({ headers }) {
     const [sortField, setSortField] = useState('');
     const [sortOrder, setSortOrder] = useState('none');
 
+    // Defines how many entries must be shown depending on the value selected in the show entries dropdown menu
     useEffect(() => {
         if (tableData.length > 0) {
             const max = tableData.length / showEntries;
@@ -28,6 +39,7 @@ export default function Table({ headers }) {
         } else setMaxPage(1);
     }, [setMaxPage, showEntries, tableData.length]);
 
+    // Options of the show entries dropdown menu
     const numberEntries = [
         { name: '5' },
         { name: '10' },
@@ -36,6 +48,7 @@ export default function Table({ headers }) {
         { name: '25' }
     ];
 
+    // Disables/Enables next/previous page button depending on which page the user is currently on
     useEffect(() => {
         if (currentPage === 1) {
             setPreviousPageDisabled(true);
@@ -72,6 +85,7 @@ export default function Table({ headers }) {
         else setPreviousPageDisabled(false);
     };
 
+    // Handles the search input
     const handleSearch = (e) => {
         const searchValue = e.target.value.toLowerCase().toString();
         if (searchValue.length > 1) {
@@ -79,8 +93,8 @@ export default function Table({ headers }) {
             setIsSearching(true);
             const results = employees
                 .map((employee) => {
-                    for (let i = 0; i < headers.length; i++) {
-                        const key = headers[i].key;
+                    for (let i = 0; i < Headers.length; i++) {
+                        const key = Headers[i].key;
                         if (employee[key].toLowerCase().includes(searchValue))
                             return employee;
                     }
@@ -173,14 +187,14 @@ export default function Table({ headers }) {
             <div className="table-container">
                 <table data-testid="table" className="table is-striped is-hoverable is-fullwidth">
                     <TableHeader
-                        columns={headers}
+                        columns={Headers}
                         sortField={sortField}
                         setSortField={setSortField}
                         sortOrder={sortOrder}
                         setSortOrder={setSortOrder}
                     />
                     <TableBody
-                        columns={headers}
+                        columns={Headers}
                         data={tableData}
                         numberEntries={showEntries}
                         currentPage={currentPage}

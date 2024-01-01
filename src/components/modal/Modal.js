@@ -1,6 +1,11 @@
 import React from 'react';
 import { IoIosCloseCircle } from "react-icons/io";
 
+/**
+ * Modal component.
+ * Rendered when an employee is added.
+ */
+
 export default function Modal({showModal}) {
     return (
         <div className='modal-container'>

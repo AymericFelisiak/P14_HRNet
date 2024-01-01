@@ -12,9 +12,7 @@ describe('Employee list page', () => {
     });
     test('Shows employee data in table', () => {
         renderWithProviders(<EmployeeList />);
-
         const data = screen.getByText(/Mayer/);
-
         expect(data).toBeInTheDocument();
     });
     test('Input search working', async () => {

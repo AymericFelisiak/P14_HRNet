@@ -1,5 +1,17 @@
 import React, { useEffect, useState } from 'react';
 
+/**
+ * Table body component.
+ * It's where the employee data will be shown.
+ * The props :
+ * - columns : the headers
+ * - data : the employee data (not the one in the store)
+ * - numberEntries : how many entries to show per page
+ * - currentPage : the actual page (default : 1)
+ * - setMinIndex : setter of the useState in Table.js
+ * - setCurrentNumberOfEntries : setter of the useState in Table.js
+ */
+
 export default function TableBody({
     columns,
     data,
@@ -9,6 +21,11 @@ export default function TableBody({
     setCurrentNumberOfEntries
 }) {
     const [newData, setNewData] = useState(data);
+
+    /**
+     * Retrieves the data based on the page the user is on.
+     * Re-renders the component when the user changes the page.
+     */
 
     useEffect(() => {
         const index = numberEntries * (currentPage - 1);

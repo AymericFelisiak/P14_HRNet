@@ -1,8 +1,23 @@
 import React from 'react';
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
 
+/**
+ * Component for the table headers.
+ * Props :
+ * - columns : headers
+ * - sortField/setSortField : value and setter of useState in Table.js, field = a header
+ * - sortOrder/setSortOrder : value and setter of the useState in Table.js, order = none/asc/desc
+ */
+
 export default function TableHeader({ columns, sortField, setSortField, sortOrder, setSortOrder }) {
 
+    /**
+     * Handles the sorting when a header is clicked.
+     * Retrieves which header has been clicked, the key.
+     * Then the new order is set depending of the old state.
+     * If none => asc, if asc => desc, if desc => none.
+     * If it's a new header then old => none and new => asc.
+     */
     const handleSortingChange = (key) => {
         const newSortOrder =
             sortOrder === 'none'

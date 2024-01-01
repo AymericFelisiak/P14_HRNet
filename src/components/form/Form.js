@@ -6,8 +6,16 @@ import states from '../../data/StateList.json';
 import departments from '../../data/DepartmentList.json';
 import { getAbbreviation } from './FormUtils';
 
+/**
+ * Form component.
+ * The prop showModal contains the setter for showModal useState.
+ * showModal is false by default and is set to true when a user is saved, which then renders the modal.
+ */
+
 export default function Form({ showModal }) {
     const dispatch = useDispatch();
+
+    // Handler to add the an employee
 
     const handleAddEmployee = (e) => {
         e.preventDefault();

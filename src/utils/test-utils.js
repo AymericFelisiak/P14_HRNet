@@ -4,6 +4,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import { createSlice } from '@reduxjs/toolkit';
 
+// Contains the mockStore and mockData used in the unit tests.
+
 const employee = [
     {
         city: 'Alabama',
@@ -51,7 +53,6 @@ export function renderWithProviders(
     ui,
     {
         preloadedState = {},
-        // Automatically create a store instance if no store was passed in
         store = configureStore({
             reducer: { employees: employeeSlice.reducer },
             preloadedState
@@ -62,7 +63,5 @@ export function renderWithProviders(
     function Wrapper({ children }) {
         return <Provider store={store}>{children}</Provider>;
     }
-
-    // Return an object with the store and all of RTL's query functions
     return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
 }
