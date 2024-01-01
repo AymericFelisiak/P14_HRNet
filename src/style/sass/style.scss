@@ -2,9 +2,20 @@
 @use 'components/table';
 @use 'components/modal';
 @use 'components/form';
-@use "../../../node_modules/bulma/bulma.sass";
 @use "components/navbar";
 
 body {
     margin: 0;
 }
+
+$pagination-color: hsl(229, 53%, 53%);
+$pagination-border-color: hsl(229, 53%, 53%);
+$pagination-hover-color: hsl(0, 0%, 100%);
+$pagination-hover-border-color: hsl(229, 53%, 53%);
+$pagination-disabled-background-color: hsl(0, 0%, 100%);
+$pagination-current-background-color: hsl(229, 53%, 53%);
+$table-row-hover-background-color: hsl(142, 52%, 96%);
+$table-striped-row-even-background-color: hsl(219, 70%, 96%);
+$table-striped-row-even-hover-background-color: hsl(142, 52%, 96%);
+
+@import "../../../node_modules/bulma/bulma.sass";

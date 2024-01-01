@@ -29,13 +29,8 @@
             }
         }
     }
-    .table {
-        &.is-striped {
-            tbody {
-                tr:not(.is-selected):nth-child(even) {
-                   background-color: hsl(219, 70%, 96%);
-                }
-            }
-        }
-    }
+}
+
+.pagination-link:hover {
+    background-color: hsl(229, 53%, 53%);
 }

@@ -141,7 +141,7 @@ export default function Form({ showModal }) {
                 </div>
             </form>
             <div className="columns is-centered is-mobile">
-                <button className="button is-primary mb-4" form="create-employee">
+                <button className="button is-success is-light mb-4" form="create-employee">
                     Save
                 </button>
             </div>
