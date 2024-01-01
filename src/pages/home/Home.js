@@ -4,7 +4,6 @@ import Modal from '../../components/modal/Modal';
 
 export default function Home() {
     const [showModal, setShowModal] = useState(false);
-
     return (
         <>
             <div className="container">
