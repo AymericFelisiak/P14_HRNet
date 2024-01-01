@@ -23,5 +23,10 @@ $table-row-hover-background-color: hsl(142, 52%, 96%);
 $table-striped-row-even-background-color: hsl(219, 70%, 96%);
 $table-striped-row-even-hover-background-color: hsl(142, 52%, 96%);
 
+// Form
+$label-color: hsl(229, 53%, 53%);
+$input-focus-border-color: hsl(229, 53%, 53%);
+$input-focus-box-shadow-size: 0;
+
 /* Always import Bulma scss after variables changes */
 @import "../../../node_modules/bulma/bulma.sass";

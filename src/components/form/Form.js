@@ -4,6 +4,7 @@ import { addEmployee } from '../../store/EmployeeSlice';
 import DropDownMenu from 'p14_dropdownmenu';
 import states from '../../data/StateList.json';
 import departments from '../../data/DepartmentList.json';
+import { getAbbreviation } from './FormUtils';
 
 export default function Form({ showModal }) {
     const dispatch = useDispatch();
@@ -12,6 +13,8 @@ export default function Form({ showModal }) {
         e.preventDefault();
         const form = new FormData(e.target);
         const data = Object.fromEntries(form.entries());
+        const abbreviation = getAbbreviation(data.state);
+        data.state = abbreviation;
         dispatch(addEmployee(data));
         showModal(true);
     };
