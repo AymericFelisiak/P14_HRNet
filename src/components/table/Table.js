@@ -4,7 +4,7 @@ import TableBody from './TableBody';
 import DropDownMenu from 'p14_dropdownmenu';
 import { useSelector } from 'react-redux';
 
-export default function Table({ className, headers }) {
+export default function Table({ headers }) {
     const employees = useSelector((state) => state.employees.user);
     const [tableData, setTableData] = useState(employees);
     const [unsortedTable, setUnsortedTable] = useState();
@@ -54,10 +54,10 @@ export default function Table({ className, headers }) {
     /**
      * Resets to first page when users changes show entries value
      */
-    
+
     useEffect(() => {
         setCurrentPage(1);
-    }, [showEntries])
+    }, [showEntries]);
 
     const nextPage = (e) => {
         const newPage = currentPage + 1;
@@ -141,60 +141,75 @@ export default function Table({ className, headers }) {
     }, [employees, isSearching, sortField, sortOrder, unsortedTable]);
 
     return (
-        <main className="employees-table-container">
-            <div className="employees-table-top">
+        <section className="section px-2">
+            <div className="level employees-table-top">
                 <div
-                    className="entries-options-wrapper"
+                    className="level-left entries-options-wrapper"
                     onChange={(e) => setShowEntries(e.target.value)}
                 >
-                    Show{' '}
-                    <DropDownMenu
-                        name="number-entries"
-                        className=""
-                        data={numberEntries}
-                    />{' '}
-                    entries
+                    Show&nbsp;
+                    <div className="select is-small">
+                        <DropDownMenu
+                            name="number-entries"
+                            className=""
+                            data={numberEntries}
+                        />
+                    </div>
+                    &nbsp;entries
                 </div>
-                <div className="search">
-                    <label htmlFor="search">Search: </label>
-                    <input name="search" type="text" onChange={handleSearch} />
+                <div className="level-right search">
+                    <label htmlFor="search">Search:&nbsp;</label>
+                    <input
+                        className="input is-small"
+                        name="search"
+                        type="text"
+                        onChange={handleSearch}
+                    />
                 </div>
             </div>
-            <table className={className}>
-                <TableHeader
-                    columns={headers}
-                    sortField={sortField}
-                    setSortField={setSortField}
-                    sortOrder={sortOrder}
-                    setSortOrder={setSortOrder}
-                />
-                <TableBody
-                    columns={headers}
-                    data={tableData}
-                    numberEntries={showEntries}
-                    currentPage={currentPage}
-                    setMinIndex={setMinIndex}
-                    setCurrentNumberOfEntries={setCurrentNumberOfEntries}
-                />
-            </table>
-            <div className="employees-table-bottom">
-                <p>
+            <div className="table-container">
+                <table className="table is-striped is-hoverable is-fullwidth">
+                    <TableHeader
+                        columns={headers}
+                        sortField={sortField}
+                        setSortField={setSortField}
+                        sortOrder={sortOrder}
+                        setSortOrder={setSortOrder}
+                    />
+                    <TableBody
+                        columns={headers}
+                        data={tableData}
+                        numberEntries={showEntries}
+                        currentPage={currentPage}
+                        setMinIndex={setMinIndex}
+                        setCurrentNumberOfEntries={setCurrentNumberOfEntries}
+                    />
+                </table>
+            </div>
+
+            <div className="level">
+                <p className="level-left">
                     Showing {tableData.length === 0 ? 0 : minIndex + 1} to{' '}
                     {minIndex + currentNumberOfEntries} of {tableData.length}{' '}
                     entries
                 </p>
-                <div className="employees-table-bottom-buttons-wrapper">
+                <div className="level-right pagination is-small">
                     <button
+                        className="pagination-previous"
                         onClick={previousPage}
                         disabled={previousPageDisabled}
                     >
-                        {currentPage - 1}
+                        Previous
                     </button>
-                    <button onClick={nextPage} disabled={nextPageDisabled}>
-                        {currentPage + 1}
+                    <button
+                        className="pagination-next"
+                        onClick={nextPage}
+                        disabled={nextPageDisabled}
+                    >
+                        Next
                     </button>
                 </div>
             </div>
-        </main>
+        </section>
     );
 }

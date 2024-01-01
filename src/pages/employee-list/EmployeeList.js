@@ -1,16 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Table from "../../components/table/Table";
-import headers from "../../data/TableHeaders.json";
+import React from 'react';
+import Table from '../../components/table/Table';
+import headers from '../../data/TableHeaders.json';
 
 export default function EmployeeList() {
-
-    return(
-        <div id="employee-div" className="container">
-            <h1>Current Employees</h1>
-            <table id="employee-table" className="display"></table>
-            <Link to="/">Home</Link>
-            <Table className='employees-table' headers={headers} />
+    return (
+        <div className="container">
+            <h2 className='has-text-centered subtitle is-3'>Current Employees</h2>
+            <Table headers={headers} />
         </div>
-    )
+    );
 }

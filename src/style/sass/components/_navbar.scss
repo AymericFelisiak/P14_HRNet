@@ -1,0 +1,14 @@
+@media screen and (max-width: 1023px) {
+    .navbar {
+        display: flex;
+    }
+
+    .navbar-menu {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex-grow: 1;
+        flex-shrink: 0;
+        box-shadow: none;
+    }
+}

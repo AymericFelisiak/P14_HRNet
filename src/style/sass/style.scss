@@ -1,6 +1,9 @@
 @use 'pages/home';
 @use 'components/table';
 @use 'components/modal';
+@use 'components/form';
+@use "../../../node_modules/bulma/bulma.sass";
+@use "components/navbar";
 
 body {
     margin: 0;
