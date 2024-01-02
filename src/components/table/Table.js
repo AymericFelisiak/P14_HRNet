@@ -28,16 +28,19 @@ export default function Table() {
     const [isSearching, setIsSearching] = useState(false);
     const [sortField, setSortField] = useState('');
     const [sortOrder, setSortOrder] = useState('none');
+    const [numberArray, setNumberArray] = useState([]);
 
     // Defines how many entries must be shown depending on the value selected in the show entries dropdown menu
     useEffect(() => {
+        const arr = [...Array(maxPage).keys()];
+        setNumberArray(arr);
         if (tableData.length > 0) {
             const max = tableData.length / showEntries;
             if (Number.isInteger(max)) {
                 setMaxPage(max);
             } else setMaxPage(Math.round(max) + 1);
         } else setMaxPage(1);
-    }, [setMaxPage, showEntries, tableData.length]);
+    }, [setMaxPage, showEntries, tableData.length, maxPage]);
 
     // Options of the show entries dropdown menu
     const numberEntries = [
@@ -226,11 +229,15 @@ export default function Table() {
                                 Previous
                             </button>
                         </li>
-                        <li>
-                            <button className="pagination-link is-current">
-                                {currentPage}
-                            </button>
-                        </li>
+                        {numberArray.map((number, key) => {
+                            return (
+                                <li>
+                                    <button className={currentPage === number + 1 ? "pagination-link is-current" : 'pagination-link'} onClick={(e) => setCurrentPage(number + 1)}>
+                                        {number + 1}
+                                    </button>
+                                </li>
+                            );
+                        })}
                         <li>
                             <button
                                 className="pagination-link"
