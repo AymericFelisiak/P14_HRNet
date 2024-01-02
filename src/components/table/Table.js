@@ -231,7 +231,7 @@ export default function Table() {
                         </li>
                         {numberArray.map((number, key) => {
                             return (
-                                <li>
+                                <li key={key}>
                                     <button className={currentPage === number + 1 ? "pagination-link is-current" : 'pagination-link'} onClick={(e) => setCurrentPage(number + 1)}>
                                         {number + 1}
                                     </button>
