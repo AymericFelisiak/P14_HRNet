@@ -27,6 +27,9 @@ If you are working with several versions of NodeJS, we recommend you install [nv
 - (!) it might ask to run ` npm install -g serve` and `serve -s build` the first time
 - running `serve -s build` will launch the web app in production mode on localhost
 
+### 2.4 Running tests
+- run `npm run test`
+
 ## 3. External Libraries
 - [Custom DropDown Menu](https://github.com/AymericFelisiak/P14_DropDownMenu)
 - Used [Bulma](https://bulma.io/) for the CSS

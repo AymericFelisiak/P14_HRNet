@@ -55,7 +55,7 @@ export default function TableBody({
                             else tData = data[key] ? data[key] : '--';
                             return (
                                 <td key={key}>
-                                    <div className="cell-data">{tData}</div>
+                                    <p className="cell-data">{tData}</p>
                                 </td>
                             );
                         })}

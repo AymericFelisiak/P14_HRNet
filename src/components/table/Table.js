@@ -161,9 +161,8 @@ export default function Table() {
 
     return (
         <section className="section px-2">
-            <div className="level employees-table-top">
+            <div className="table-top-bottom">
                 <div
-                    className="level-left entries-options-wrapper"
                     onChange={(e) => setShowEntries(e.target.value)}
                 >
                     <label htmlFor="number-entries">Show&nbsp;</label>
@@ -177,7 +176,7 @@ export default function Table() {
                     </div>
                     &nbsp;entries
                 </div>
-                <div className="level-right search">
+                <div className="table-top-bottom search">
                     <label htmlFor="search">Search:&nbsp;</label>
                     <input
                         data-testid="search-input"
@@ -189,10 +188,10 @@ export default function Table() {
                     />
                 </div>
             </div>
-            <div className="table-container">
+            <div className="table-wrapper">
                 <table
                     data-testid="table"
-                    className="table is-striped is-hoverable is-fullwidth"
+                    className="table is-striped"
                 >
                     <TableHeader
                         columns={Headers}
@@ -212,13 +211,13 @@ export default function Table() {
                 </table>
             </div>
 
-            <div className="level">
-                <p className="level-left">
+            <div className="table-top-bottom">
+                <p>
                     Showing {tableData.length === 0 ? 0 : minIndex + 1} to{' '}
                     {minIndex + currentNumberOfEntries} of {tableData.length}{' '}
                     entries
                 </p>
-                <div className="level-right pagination is-small">
+                <div className="pagination is-small">
                     <ul className="pagination-list">
                         <li>
                             <button
@@ -232,12 +231,26 @@ export default function Table() {
                         {numberArray.map((number, key) => {
                             return (
                                 <li key={key}>
-                                    <button className={currentPage === number + 1 ? "pagination-link is-current" : 'pagination-link'} onClick={(e) => setCurrentPage(number + 1)}>
+                                    <button
+                                        className={
+                                            currentPage === number + 1
+                                                ? 'pagination-link is-current'
+                                                : 'pagination-link'
+                                        }
+                                        onClick={(e) =>
+                                            setCurrentPage(number + 1)
+                                        }
+                                    >
                                         {number + 1}
                                     </button>
                                 </li>
                             );
                         })}
+                        {/* <li>
+                            <button className="pagination-link is-current">
+                                {currentPage}
+                            </button>
+                        </li> */}
                         <li>
                             <button
                                 className="pagination-link"

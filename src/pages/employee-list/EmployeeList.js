@@ -6,7 +6,7 @@ import headers from '../../data/TableHeaders.json';
 
 export default function EmployeeList() {
     return (
-        <div className="container">
+        <div className="employee-container">
             <h2 className='has-text-centered subtitle is-3'>Current Employees</h2>
             <Table headers={headers} />
         </div>

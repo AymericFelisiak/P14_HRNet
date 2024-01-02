@@ -38,7 +38,7 @@ export default function TableHeader({ columns, sortField, setSortField, sortOrde
                     return (
                         <th key={key} onClick={() => handleSortingChange(key)}>
                             <div className="header-content">
-                                {header}
+                                <p>{header}</p>
                                 {key !== sortField || sortOrder === 'none' ? (
                                     <div className="arrow-wrapper">
                                         <IoIosArrowUp className="arrow-up default" />

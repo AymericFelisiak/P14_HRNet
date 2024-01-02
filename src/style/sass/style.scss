@@ -1,32 +1,11 @@
+@use "custom-bulma";
 @use 'pages/home';
 @use 'components/table';
 @use 'components/modal';
 @use 'components/form';
 @use "components/navbar";
+@use "pages/employee-list";
 
 body {
     margin: 0;
 }
-
-/* Custom variables for Bulma */
-
-// Pagination
-$pagination-color: hsl(229, 53%, 53%);
-$pagination-border-color: hsl(229, 53%, 53%);
-$pagination-hover-color: hsl(0, 0%, 100%);
-$pagination-hover-border-color: hsl(229, 53%, 53%);
-$pagination-disabled-background-color: hsl(0, 0%, 100%);
-$pagination-current-background-color: hsl(229, 53%, 53%);
-
-// Table
-$table-row-hover-background-color: hsl(142, 52%, 96%);
-$table-striped-row-even-background-color: hsl(219, 70%, 96%);
-$table-striped-row-even-hover-background-color: hsl(142, 52%, 96%);
-
-// Form
-$label-color: hsl(229, 53%, 53%);
-$input-focus-border-color: hsl(229, 53%, 53%);
-$input-focus-box-shadow-size: 0;
-
-/* Always import Bulma scss after variables changes */
-@import "../../../node_modules/bulma/bulma.sass";
